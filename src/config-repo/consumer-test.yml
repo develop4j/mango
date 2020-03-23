@@ -1,14 +1,1 @@
-{
-	"name": "consumer",
-	"profiles": ["test"],
-	"label": null,
-	"version": "",
-	"state": null,
-	"propertySources": [{
-		"name": "https://github.com/develop4j/mango.git/src/config-repo/test.yml",
-		"source": {
-			"server.port": 8020,
-			"spring.application.name": "mango-config"
-		}
-	}]
-}
+hell=你好
