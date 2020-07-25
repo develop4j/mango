@@ -1,0 +1,26 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: mango-producer
+  cloud:
+    consul:
+      discovery:
+        register: true
+        service-name: ${spring.application.name}
+        enabled: true
+      host: localhost
+      port: 8500
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

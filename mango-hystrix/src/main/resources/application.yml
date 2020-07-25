@@ -1,0 +1,16 @@
+server:
+  port: 8501
+spring:
+  application:
+    name: mango-hystrix
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: ${spring.application.name}  # 发布的服务名称
+turbine:
+  instanceUrlSuffix: hystrix.stream
+  app-config: kitty-consumer
+  cluster-name-expression: "'default'"
+  combine-host-port: true

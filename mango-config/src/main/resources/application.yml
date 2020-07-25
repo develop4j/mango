@@ -1,0 +1,35 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: mango-config
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+    config:
+      label: develop # git仓库分支
+      server:
+        git:
+          uri: "https://github.com/develop4j/mango.git" # git仓库地址
+          username: develop4j
+          password: liushiwei9
+          search-paths: src/config-repo # git仓库地址下的相对地址，可配置多个用，隔开
+    bus: # 开启mq日志追踪
+      trace:
+        enabled: true
+  #  profiles:
+#    active: native
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+# 开启健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
