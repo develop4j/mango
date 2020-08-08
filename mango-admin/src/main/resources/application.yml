@@ -3,7 +3,7 @@ server:
 spring:
   cloud:
     consul:
-      host: localhost
+      host: 121.196.122.86
       port: 8500
       discovery:
         serviceName: ${spring.application.name}
@@ -12,7 +12,7 @@ spring:
   boot:
     admin:
       client:
-        url: "http://localhost:8000"
+        url: "http://121.196.122.86:8000"
   datasource:
     name: druidDataSource
     type: com.alibaba.druid.pool.DruidDataSource

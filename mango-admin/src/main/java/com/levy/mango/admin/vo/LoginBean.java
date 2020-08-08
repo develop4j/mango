@@ -29,5 +29,13 @@ public class LoginBean {
 	public void setCaptcha(String captcha) {
 		this.captcha = captcha;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "LoginBean{" +
+				"account='" + account + '\'' +
+				", password='" + password + '\'' +
+				", captcha='" + captcha + '\'' +
+				'}';
+	}
 }

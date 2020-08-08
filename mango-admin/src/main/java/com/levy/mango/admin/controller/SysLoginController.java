@@ -51,9 +51,11 @@ public class SysLoginController {
         String text = producer.createText();
         // 生成图片验证码
         BufferedImage image = producer.createImage(text);
+        logger.info("===============登录验证码："+text+"========");
         // 保存到验证码到 session
         request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, text);
 
+        logger.info("===============SESSION ID："+request.getSession().getId()+"========");
         ServletOutputStream out = response.getOutputStream();
         ImageIO.write(image, "jpg", out);
         IOUtils.closeQuietly(out);
@@ -64,12 +66,15 @@ public class SysLoginController {
      */
     @PostMapping(value = "/login")
     public HttpResult login(@RequestBody LoginBean loginBean, HttpServletRequest request) throws IOException {
-//        logger.info("login request",loginBean);
+        logger.info("login request",loginBean);
         String username = loginBean.getAccount();
         String password = loginBean.getPassword();
         String captcha = loginBean.getCaptcha();
         // 从session中获取之前保存的验证码跟前台传来的验证码进行匹配
         Object kaptcha = request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+        logger.info("登录获取到的验证码："+captcha);
+        logger.info("Session ID："+request.getSession().getId());
+        logger.info("Session中获取到的验证码："+kaptcha);
         if(kaptcha == null){
             return HttpResult.error("验证码已失效");
         }
