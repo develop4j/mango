@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 禁用 csrf, 由于使用的是JWT，我们这里不需要csrf
+        http.headers().frameOptions().disable();
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 // 跨域预检请求

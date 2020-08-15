@@ -51,7 +51,6 @@ public class JwtTokenUtils implements Serializable {
     /**
 	 * 生成令牌
 	 *
-	 * @param userDetails 用户
 	 * @return 令牌
 	 */
 	public static String generateToken(Authentication authentication) {
@@ -92,7 +91,6 @@ public class JwtTokenUtils implements Serializable {
 	
 	/**
 	 * 根据请求令牌获取登录认证信息
-	 * @param token 令牌
 	 * @return 用户名
 	 */
 	public static Authentication getAuthenticationeFromToken(HttpServletRequest request) {
